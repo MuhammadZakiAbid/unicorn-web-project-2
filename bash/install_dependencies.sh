@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo yum install tomcat -y
 sudo yum -y install httpd
-sudo tee /etc/httpd/conf.d/tomcat_manager.conf > /dev/null << EOF
+sudo cat << EOF > /etc/httpd/conf.d/tomcat_manager.conf
 <VirtualHost *:80>
     ServerAdmin root@localhost
     ServerName app.wildrydes.com
@@ -12,4 +12,3 @@ sudo tee /etc/httpd/conf.d/tomcat_manager.conf > /dev/null << EOF
     ProxyPassReverse / http://localhost:8080/unicorn-web-project/
 </VirtualHost>
 EOF
-
